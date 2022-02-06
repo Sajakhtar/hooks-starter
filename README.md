@@ -1,7 +1,11 @@
 # React Hooks
 
-Based on [React Hooks for Everyone](https://leveluptutorials.com/tutorials/react-hooks-for-everyone/) by [Level Up Tutorials](https://leveluptutorials.com)
+Based on [React Hooks for Everyone](https://leveluptutorials.com/tutorials/react-hooks-for-everyone/) by [Level Up Tutorials](https://leveluptutorials.com).
 
+This repo was cloned from leveluptuts [hooks starter](https://github.com/leveluptuts/hooks-starter) repo.
+
+
+# Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
