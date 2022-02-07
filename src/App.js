@@ -9,23 +9,38 @@ import { Toggle } from './Toggle';
 const App = () => {
 
   // const [ state , setState ] = useState(initialValue)
-  const [ name , setName ] = useState('')
+  // const [ name , setName ] = useState('')
 
-  useEffect(() => {
-    // set page title to name state
-    document.title = name;
-  })
+  // use Custom Hook
+  const [ name , setName ] = useTitleInput('')
+
+  // useEffect(() => {
+  //   // set page title to name state
+  //   document.title = name;
+  // })
 
   return (
+    // <div className="main-wrapper">
+    //   <h1>Level Up Dishes</h1>
+    //   <Toggle />
+    //   {/* <h3>{name}</h3> */}
+    //   <form onSubmit={(e) => {
+    //     e.preventDefault();
+    //     formSubmit(name, setName);
+    //   }}>
+    //     <input type="text" onChange={(e) => setName(e.target.value)} value={name} placeholder="email" />
+    //     <button>Submit</button>
+    //   </form>
+    // </div>
+
     <div className="main-wrapper">
       <h1>Level Up Dishes</h1>
       <Toggle />
       {/* <h3>{name}</h3> */}
       <form onSubmit={(e) => {
         e.preventDefault();
-        formSubmit(name, setName);
       }}>
-        <input type="text" onChange={(e) => setName(e.target.value)} value={name} placeholder="email" />
+        <input type="text" onChange={(e) => setName(e.target.value)} value={name} placeholder="type something" />
         <button>Submit</button>
       </form>
     </div>
@@ -34,9 +49,22 @@ const App = () => {
 
 
 // could be pulled in from another file
-const formSubmit = (value, setValue) => {
-  console.log(`email sent to ${value}`)
-  setValue('')
+// const formSubmit = (value, setValue) => {
+//   console.log(`email sent to ${value}`)
+//   setValue('')
+// }
+
+// Custom Hook
+function useTitleInput(initialValue) {
+  const [ value , setValue ] = useState(initialValue)
+
+  useEffect(() => {
+    // set page title to name state
+    document.title = value;
+  });
+
+  return [ value, setValue ];
 }
+
 
 export default App;
