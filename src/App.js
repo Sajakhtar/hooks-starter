@@ -9,6 +9,8 @@ import { Toggle } from './Toggle';
 // import custom hook
 import { useTitleInput } from './hooks/useTitleInput';
 
+import Counter from './Counter'
+
 export const UserContext = createContext();
 
 
@@ -48,15 +50,21 @@ const App = () => {
 
       <div className="main-wrapper" ref={ref}>
         <h1>Level Up Dishes</h1>
+
         <Toggle />
+        <Counter />
+
         {/* <h3>{name}</h3> */}
+
         <form onSubmit={(e) => {
           e.preventDefault();
         }}>
           <input type="text" onChange={(e) => setName(e.target.value)} value={name} placeholder="type something" />
           <button>Submit</button>
         </form>
+
         <button onClick={() => console.log(ref.current.className)}>Log Ref</button>
+
         <button onClick={() => ref.current.classList.add('new-fake-class')}>Ref: Add class</button>
       </div>
 
