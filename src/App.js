@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, createContext } from 'react';
+import React, { useState, useEffect, useRef, createContext, useMemo } from 'react';
 
 // import Toggle Class based compoent
 // import Toggle from './Toggle';
@@ -32,6 +32,16 @@ const App = () => {
   const ref = useRef();
   // console.log('ref', ref.current);
 
+
+  const reverseWord = (word) => {
+    console.log('function called')
+    return word.split("").reverse().join("");
+  }
+
+  const title = "Level Up Dishes";
+  // reverseWord no longer runs every time component re-renders, as long as the title in the array is not changing
+  const TitleReveresed = useMemo(() => reverseWord(title), [title]);
+
   return (
     // <div className="main-wrapper">
     //   <h1>Level Up Dishes</h1>
@@ -49,7 +59,8 @@ const App = () => {
     <UserContext.Provider value={{ user: true }}>
 
       <div className="main-wrapper" ref={ref}>
-        <h1>Level Up Dishes</h1>
+        {/* <h1>Level Up Dishes</h1> */}
+        <h1>{TitleReveresed}</h1>
 
         <Toggle />
         <Counter />
