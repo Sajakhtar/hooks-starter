@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 // import Toggle Class based compoent
 // import Toggle from './Toggle';
@@ -17,10 +17,15 @@ const App = () => {
   // use Custom Hook
   const [ name , setName ] = useTitleInput('')
 
+
   // useEffect(() => {
   //   // set page title to name state
   //   document.title = name;
   // })
+
+  // useRef hook for DOM elements
+  const ref = useRef();
+  // console.log('ref', ref.current);
 
   return (
     // <div className="main-wrapper">
@@ -36,7 +41,7 @@ const App = () => {
     //   </form>
     // </div>
 
-    <div className="main-wrapper">
+    <div className="main-wrapper" ref={ref}>
       <h1>Level Up Dishes</h1>
       <Toggle />
       {/* <h3>{name}</h3> */}
@@ -46,6 +51,8 @@ const App = () => {
         <input type="text" onChange={(e) => setName(e.target.value)} value={name} placeholder="type something" />
         <button>Submit</button>
       </form>
+      <button onClick={() => console.log(ref.current.className)}>Log Ref</button>
+      <button onClick={() => ref.current.classList.add('new-fake-class')}>Ref: Add class</button>
     </div>
   );
 };
