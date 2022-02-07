@@ -14,11 +14,24 @@ const App = () => {
   return (
     <div className="main-wrapper">
       <h1>Level Up Dishes</h1>
-      <input type="text" onChange={(e) => setName(e.target.value)} value={name} />
-      <h3>{name}</h3>
       <Toggle />
+      {/* <h3>{name}</h3> */}
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        formSubmit(name, setName)
+      }}>
+        <input type="text" onChange={(e) => setName(e.target.value)} value={name} placeholder="email" />
+        <button>Submit</button>
+      </form>
     </div>
   );
 };
+
+
+// could be pulled in from another file
+const formSubmit = (value, setValue) => {
+  console.log(`email sent to ${value}`)
+  setValue('')
+}
 
 export default App;
