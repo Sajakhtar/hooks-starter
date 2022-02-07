@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, createContext } from 'react';
 
 // import Toggle Class based compoent
 // import Toggle from './Toggle';
@@ -8,6 +8,9 @@ import { Toggle } from './Toggle';
 
 // import custom hook
 import { useTitleInput } from './hooks/useTitleInput';
+
+export const UserContext = createContext();
+
 
 const App = () => {
 
@@ -41,19 +44,23 @@ const App = () => {
     //   </form>
     // </div>
 
-    <div className="main-wrapper" ref={ref}>
-      <h1>Level Up Dishes</h1>
-      <Toggle />
-      {/* <h3>{name}</h3> */}
-      <form onSubmit={(e) => {
-        e.preventDefault();
-      }}>
-        <input type="text" onChange={(e) => setName(e.target.value)} value={name} placeholder="type something" />
-        <button>Submit</button>
-      </form>
-      <button onClick={() => console.log(ref.current.className)}>Log Ref</button>
-      <button onClick={() => ref.current.classList.add('new-fake-class')}>Ref: Add class</button>
-    </div>
+    <UserContext.Provider value={{ user: true }}>
+
+      <div className="main-wrapper" ref={ref}>
+        <h1>Level Up Dishes</h1>
+        <Toggle />
+        {/* <h3>{name}</h3> */}
+        <form onSubmit={(e) => {
+          e.preventDefault();
+        }}>
+          <input type="text" onChange={(e) => setName(e.target.value)} value={name} placeholder="type something" />
+          <button>Submit</button>
+        </form>
+        <button onClick={() => console.log(ref.current.className)}>Log Ref</button>
+        <button onClick={() => ref.current.classList.add('new-fake-class')}>Ref: Add class</button>
+      </div>
+
+    </UserContext.Provider>
   );
 };
 
