@@ -6,6 +6,9 @@ import React, { useState, useEffect } from 'react';
 // import Toggle function based component
 import { Toggle } from './Toggle';
 
+// import custom hook
+import { useTitleInput } from './hooks/useTitleInput';
+
 const App = () => {
 
   // const [ state , setState ] = useState(initialValue)
@@ -55,16 +58,16 @@ const App = () => {
 // }
 
 // Custom Hook
-function useTitleInput(initialValue) {
-  const [ value , setValue ] = useState(initialValue)
+// function useTitleInput(initialValue) {
+//   const [ value , setValue ] = useState(initialValue)
 
-  useEffect(() => {
-    // set page title to name state
-    document.title = value;
-  });
+//   useEffect(() => {
+//     // set page title to name state
+//     document.title = value;
+//   });
 
-  return [ value, setValue ];
-}
+//   return [ value, setValue ];
+// }
 
 
 export default App;
