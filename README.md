@@ -4,6 +4,9 @@ Based on [React Hooks for Everyone](https://leveluptutorials.com/tutorials/react
 
 This repo was cloned from leveluptuts [hooks starter](https://github.com/leveluptuts/hooks-starter) repo.
 
+Additional packages used:
+- `npm install use-abortable-fetch --save`
+
 
 # Create React App
 
