@@ -47,12 +47,14 @@ const App = () => {
   const [dishes, setDishes] = useState([]);
 
   const fetchDishes = async () => {
+    console.log('run fetch dishes')
     const res = await fetch('https://my-json-server.typicode.com/leveluptuts/fakeapi/dishes');
     const data = await res.json();
     setDishes(data)
   }
 
   // apply useEffect on mount by passing second param as empty array
+  // not got practice to use empty array as proxy for on-mount
   useEffect( async () => {
     fetchDishes();
   }, []);
