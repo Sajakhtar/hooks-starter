@@ -13,6 +13,7 @@ import Counter from './Counter'
 
 import useAbortableFetch from 'use-abortable-fetch';
 
+import { useSpring, animated } from  'react-spring';
 
 export const UserContext = createContext();
 
@@ -65,7 +66,11 @@ const App = () => {
   // }, []);
 
 
-  if(!data) return null;
+  const props = useSpring({ opacity:1, from: { opacity: 0 } });
+  console.log('props', props);
+
+
+  // if(!data) return null;
 
   return (
     // <div className="main-wrapper">
@@ -85,7 +90,7 @@ const App = () => {
 
       <div className="main-wrapper" ref={ref}>
         {/* <h1>Level Up Dishes</h1> */}
-        <h1>{TitleReveresed}</h1>
+        <animated.h1 style={props} >{TitleReveresed}</animated.h1>
 
         <Toggle />
         <Counter />
@@ -115,7 +120,7 @@ const App = () => {
           </article>
         ) )} */}
 
-        { data.map( (dish) => (
+        { data && data.map( (dish) => (
           <article className="dish-card dish-card--withImage">
             <h3>{dish.name}</h3>
             <p>{dish.desc}</p>
