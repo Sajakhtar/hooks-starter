@@ -11,6 +11,9 @@ import { useTitleInput } from './hooks/useTitleInput';
 
 import Counter from './Counter'
 
+import useAbortableFetch from 'use-abortable-fetch';
+
+
 export const UserContext = createContext();
 
 
@@ -44,21 +47,25 @@ const App = () => {
 
 
   // fetch data from api with both useState and useEffect
-  const [dishes, setDishes] = useState([]);
+  // const [dishes, setDishes] = useState([]);
 
-  const fetchDishes = async () => {
-    console.log('run fetch dishes')
-    const res = await fetch('https://my-json-server.typicode.com/leveluptuts/fakeapi/dishes');
-    const data = await res.json();
-    setDishes(data)
-  }
+  const { data, loading } = useAbortableFetch('https://my-json-server.typicode.com/leveluptuts/fakeapi/dishes');
+
+  // const fetchDishes = async () => {
+  //   console.log('run fetch dishes')
+  //   const res = await fetch('https://my-json-server.typicode.com/leveluptuts/fakeapi/dishes');
+  //   const data = await res.json();
+  //   setDishes(data)
+  // }
 
   // apply useEffect on mount by passing second param as empty array
   // not got practice to use empty array as proxy for on-mount
-  useEffect( async () => {
-    fetchDishes();
-  }, []);
+  // useEffect( async () => {
+  //   fetchDishes();
+  // }, []);
 
+
+  if(!data) return null;
 
   return (
     // <div className="main-wrapper">
@@ -96,7 +103,19 @@ const App = () => {
 
         <button onClick={() => ref.current.classList.add('new-fake-class')}>Ref: Add class</button>
 
-        { dishes.map( (dish) => (
+        {/* { dishes.map( (dish) => (
+          <article className="dish-card dish-card--withImage">
+            <h3>{dish.name}</h3>
+            <p>{dish.desc}</p>
+            <div className="ingredients">
+              { dish.ingredients.map( (ingredient) => (
+                <span>{ingredient}</span>
+              ))}
+            </div>
+          </article>
+        ) )} */}
+
+        { data.map( (dish) => (
           <article className="dish-card dish-card--withImage">
             <h3>{dish.name}</h3>
             <p>{dish.desc}</p>
