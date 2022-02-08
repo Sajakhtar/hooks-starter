@@ -48,6 +48,8 @@ import React, { useState, useContext } from 'react';
 
 import { UserContext } from './App';
 
+import DishForm from './DishForm';
+
 export const Toggle = () => {
 
   const [ isToggled , setIsToggled ] = useState(false);
@@ -60,7 +62,8 @@ export const Toggle = () => {
   return (
     <div>
         <button onClick={() => setIsToggled(!isToggled) }>Toggle</button>
-        { isToggled && <h2>Hello!</h2> }
+        {/* { isToggled && <h2>Hello!</h2> } */}
+        { isToggled && <DishForm /> }
     </div>
   )
 }
