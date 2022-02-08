@@ -19,4 +19,4 @@ function useBodyScrollLock() {
 }
 
 
-export { useBodyScrollLock }
+export { useBodyScrollLock };
