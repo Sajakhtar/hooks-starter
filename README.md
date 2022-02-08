@@ -6,7 +6,7 @@ This repo was cloned from leveluptuts [hooks starter](https://github.com/levelup
 
 Additional packages used:
 - `npm install use-abortable-fetch --save`
-
+- `npm install --save react-spring`
 
 # Create React App
 
