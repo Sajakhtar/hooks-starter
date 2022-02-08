@@ -52,10 +52,10 @@ const App = () => {
     setDishes(data)
   }
 
-  // apply useEffect on mount
+  // apply useEffect on mount by passing second param as empty array
   useEffect( async () => {
-    // fetchDishes();
-  })
+    fetchDishes();
+  }, []);
 
 
   return (
