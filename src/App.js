@@ -42,6 +42,22 @@ const App = () => {
   // reverseWord no longer runs every time component re-renders, as long as the title in the array is not changing
   const TitleReveresed = useMemo(() => reverseWord(title), [title]);
 
+
+  // fetch data from api with both useState and useEffect
+  const [dishes, setDishes] = useState([]);
+
+  const fetchDishes = async () => {
+    const res = await fetch('https://my-json-server.typicode.com/leveluptuts/fakeapi/dishes');
+    const data = await res.json();
+    setDishes(data)
+  }
+
+  // apply useEffect on mount
+  useEffect( async () => {
+    // fetchDishes();
+  })
+
+
   return (
     // <div className="main-wrapper">
     //   <h1>Level Up Dishes</h1>
@@ -77,6 +93,21 @@ const App = () => {
         <button onClick={() => console.log(ref.current.className)}>Log Ref</button>
 
         <button onClick={() => ref.current.classList.add('new-fake-class')}>Ref: Add class</button>
+
+        { dishes.map( (dish) => (
+          <article className="dish-card dish-card--withImage">
+            <h3>{dish.name}</h3>
+            <p>{dish.desc}</p>
+            <div className="ingredients">
+              { dish.ingredients.map( (ingredient) => (
+                <span>{ingredient}</span>
+              ))}
+            </div>
+          </article>
+        ) )}
+
+
+
       </div>
 
     </UserContext.Provider>
