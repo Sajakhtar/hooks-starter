@@ -8,7 +8,7 @@ const DishForm = ({ setIsToggled }) => {
 
   const ref = useRef();
 
-  useOnClickOutside(ref, setIsToggled);
+  useOnClickOutside(ref, () => setIsToggled(false));
 
   useBodyScrollLock();
 
